@@ -33,131 +33,6 @@ library(cowplot)
 library(ggstatsplot)
 ```
 
-    ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.2.1 ──
-    
-    [32m✔[39m [34mggplot2[39m 3.2.1     [32m✔[39m [34mpurrr  [39m 0.3.3
-    [32m✔[39m [34mtibble [39m 2.1.3     [32m✔[39m [34mdplyr  [39m 0.8.3
-    [32m✔[39m [34mtidyr  [39m 1.0.0     [32m✔[39m [34mstringr[39m 1.4.0
-    [32m✔[39m [34mreadr  [39m 1.3.1     [32m✔[39m [34mforcats[39m 0.4.0
-    
-    ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-    [31m✖[39m [34mdplyr[39m::[32mfilter()[39m  masks [34mstats[39m::filter()
-    [31m✖[39m [34mpurrr[39m::[32mflatten()[39m masks [34mjsonlite[39m::flatten()
-    [31m✖[39m [34mdplyr[39m::[32mlag()[39m     masks [34mstats[39m::lag()
-    
-    
-    Attaching package: ‘magrittr’
-    
-    
-    The following object is masked from ‘package:purrr’:
-    
-        set_names
-    
-    
-    The following object is masked from ‘package:tidyr’:
-    
-        extract
-    
-    
-    
-    Attaching package: ‘reshape’
-    
-    
-    The following object is masked from ‘package:dplyr’:
-    
-        rename
-    
-    
-    The following objects are masked from ‘package:tidyr’:
-    
-        expand, smiths
-    
-    
-    Loading required package: sp
-    
-    
-    Attaching package: ‘sp’
-    
-    
-    The following object is masked from ‘package:scatterpie’:
-    
-        recenter
-    
-    
-    rgeos version: 0.5-2, (SVN revision 621)
-     GEOS runtime version: 3.7.2-CAPI-1.11.2 
-     Linking to sp version: 1.3-1 
-     Polygon checking: TRUE 
-    
-    
-    rgdal: version: 1.4-7, (SVN revision 845)
-     Geospatial Data Abstraction Library extensions to R successfully loaded
-     Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
-     Path to GDAL shared files: /usr/local/Cellar/gdal/2.4.2_3/share/gdal
-     GDAL binary built with GEOS: TRUE 
-     Loaded PROJ.4 runtime: Rel. 6.2.1, November 1st, 2019, [PJ_VERSION: 620]
-     Path to PROJ.4 shared files: (autodetected)
-     Linking to sp version: 1.3-1 
-    
-    
-    Attaching package: ‘gridExtra’
-    
-    
-    The following object is masked from ‘package:dplyr’:
-    
-        combine
-    
-    
-    
-    ********************************************************
-    
-    Note: As of version 1.0.0, cowplot does not change the
-    
-      default ggplot2 theme anymore. To recover the previous
-    
-      behavior, execute:
-      theme_set(theme_cowplot())
-    
-    ********************************************************
-    
-    
-    
-    Attaching package: ‘cowplot’
-    
-    
-    The following object is masked from ‘package:reshape’:
-    
-        stamp
-    
-    
-    Registered S3 methods overwritten by 'broom.mixed':
-      method         from 
-      augment.lme    broom
-      augment.merMod broom
-      glance.lme     broom
-      glance.merMod  broom
-      glance.stanreg broom
-      tidy.brmsfit   broom
-      tidy.gamlss    broom
-      tidy.lme       broom
-      tidy.merMod    broom
-      tidy.rjags     broom
-      tidy.stanfit   broom
-      tidy.stanreg   broom
-    
-    Registered S3 methods overwritten by 'car':
-      method                          from
-      influence.merMod                lme4
-      cooks.distance.influence.merMod lme4
-      dfbeta.influence.merMod         lme4
-      dfbetas.influence.merMod        lme4
-    
-    Registered S3 method overwritten by 'DescTools':
-      method        from       
-      print.palette wesanderson
-    
-
-
 ## Define variables for map
 
 
@@ -217,26 +92,6 @@ cantons_shp <- readOGR("limadmin-shp/LIMADM_CANTONS.shp")
 #rivers_df <- fortify(rivers110 )
 ```
 
-    OGR data source with driver: ESRI Shapefile 
-    Source: "/Users/peter.gilles/Google Drive/Schnëssen-Auswertung/R-Skripter/limadmin-shp/LIMADM_COMMUNES.shp", layer: "LIMADM_COMMUNES"
-    with 102 features
-    It has 4 fields
-
-
-    Warning message in readOGR("limadmin-shp/LIMADM_COMMUNES.shp"):
-    “Z-dimension discarded”
-
-
-    OGR data source with driver: ESRI Shapefile 
-    Source: "/Users/peter.gilles/Google Drive/Schnëssen-Auswertung/R-Skripter/limadmin-shp/LIMADM_CANTONS.shp", layer: "LIMADM_CANTONS"
-    with 12 features
-    It has 2 fields
-
-
-    Warning message in readOGR("limadmin-shp/LIMADM_CANTONS.shp"):
-    “Z-dimension discarded”
-
-
 ## Prepare data frame for variants 
 
 
@@ -289,14 +144,6 @@ counts3[is.na(counts3)] <- 0
 # create dataframe for pie charts map
 final_data <- left_join(scatterpie_point, counts3, by = c("commune"= "Gemeng_nei"))
 ```
-
-    Warning message:
-    “Factor `Gemeng_nei` contains implicit NA, consider using `forcats::fct_explicit_na`”
-    Warning message in `[<-.factor`(`*tmp*`, thisvar, value = 0):
-    “invalid factor level, NA generated”
-    Warning message:
-    “Column `commune`/`Gemeng_nei` joining factors with different levels, coercing to character vector”
-
 
 # Draw pie chart map
 

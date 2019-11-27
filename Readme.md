@@ -11,6 +11,7 @@ The general workflow for this script:
 - save the map, adjust some display features according to the number of maps on a panel, i.e. rows, cols, size.
 
 Peter Gilles, November 2019
+Schnëssen-Projet | https://infolux.uni.lu/schnessen/
 
 
 ```R
